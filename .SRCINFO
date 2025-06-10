@@ -1,0 +1,15 @@
+pkgbase = crosstool-ng-git
+	pkgdesc = A versatile (cross-)toolchain generator.
+	pkgver = VERSION
+	pkgrel = 1
+	url = https://crosstool-ng.github.io
+	arch = x86_64
+	arch = x86_64_v3
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	provides = crosstool-ng
+	source = git+https://github.com/crosstool-ng/crosstool-ng.git#commit=0f69d3cbeba1a913819445f2e1d57f36067f194b
+	b2sums = 6fa71b517d77ec85dc98347a2bbcfae97febdb9179e442d116293532bc3bca8c974d3144d264fc942510362b1c5c751771eca5589dd7cf495f512ffa4121882a
+
+pkgname = crosstool-ng-git
