@@ -11,17 +11,19 @@ license=('GPL')
 depends=(ncurses make rsync)
 makedepends=('git' 'flex' 'bison' 'gperf' 'help2man' 'unzip' 'lzip' 'python')
 provides=($_pkgname)
-_commit=93d5d7664faaf3a0e63c58cd74105c3c8364130b
+_commit=b286f6b3bd8fcb6439cea55083deadd59ae06f91
 source=("git+https://github.com/crosstool-ng/crosstool-ng.git#commit=$_commit")
-sha512sums=('b72f8f31c12c9a6e13240ea3d4844dba752d9d9fccac8d22ea0d033288037949566c5a9f5fb66bff344b7fdb61d3fa839e5453ba3a4d534af081bfaa7dd8109e')
-b2sums=('6c62fe08f1e07b8fc4a5b5e2812e5610c53e302b3c2677d9019f7f73ef89c1e90c32c6cbe16b3c55d6524f15f26dfa6de9e7bad17bd83be7e64d2d9d6b93c1f9')
+sha512sums=('2e1b815bc8b7e6ea3106ea98f1fc2f27fba84d87e58f567866f9c5f1c9cc69d2131b1b5ef74e92ec2745ac4f741f76931aba382dd4756657d1e47d91a369e2c4')
+b2sums=('e62b966594b5643b4926d5b624b3d5e4c7bd7c3ce9dfe7a8793967ce84892b3447bb4933d9082a8ad0759b3d9f75a0e6210e2902304a1045f3811fda45ffc98f')
 
 pkgver() {
   cd "$_pkgname"
   (
     set -o pipefail
-    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    set -x
+    git describe --long --abbrev=7 2>/dev/null | sed $(printf 's/%s-//;s\([^-]*-g\)/r\1/;s/-/./g' "$_pkgname") ||
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    set +x
   )
 }
 
