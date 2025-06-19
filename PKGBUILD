@@ -20,10 +20,8 @@ pkgver() {
   cd "$_pkgname"
   (
     set -o pipefail
-    set -x
     git describe --long --abbrev=7 2>/dev/null | sed $(printf 's/%s-//;s\([^-]*-g\)/r\1/;s/-/./g' "$_pkgname") ||
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-    set +x
   )
 }
 
