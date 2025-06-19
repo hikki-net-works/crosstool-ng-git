@@ -2,7 +2,7 @@
 
 _pkgname=crosstool-ng
 pkgname=$_pkgname-git
-pkgver=crosstool.ng.1.27.0.r65.g93d5d76
+pkgver=1.27.0.rb286f6b
 pkgrel=1
 pkgdesc="A versatile (cross-)toolchain generator."
 arch=(x86_64 x86_64_v3 armv7h aarch64)
@@ -20,7 +20,7 @@ pkgver() {
   cd "$_pkgname"
   (
     set -o pipefail
-    git describe --long --abbrev=7 2>/dev/null | sed $(printf 's/%s-//;s\([^-]*-g\)/r\1/;s/-/./g' "$_pkgname") ||
+    git describe --long --abbrev=7 2>/dev/null | sed "$(printf 's/%s-//;s/\([^-]*-g\)/r\1/;s/-/./g' "$_pkgname")" ||
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   )
 }

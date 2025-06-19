@@ -1,6 +1,6 @@
 pkgbase = crosstool-ng-git
 	pkgdesc = A versatile (cross-)toolchain generator.
-	pkgver = crosstool.ng.1.27.0.r65.g93d5d76
+	pkgver = 1.27.0.rb286f6b
 	pkgrel = 1
 	url = https://crosstool-ng.github.io
 	arch = x86_64
